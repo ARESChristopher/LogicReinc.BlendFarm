@@ -7,6 +7,7 @@ echo Building version $version
 dotnet publish LogicReinc.BlendFarm.Server -f net6.0 -c Release -r win-x64 -p:PublishSingleFile=true --self-contained true -o Deploy/LogicReinc.BlendFarm.Server/_Build/win-x64
 dotnet publish LogicReinc.BlendFarm.Server -f net6.0 -c Release -r linux-x64 -p:PublishSingleFile=true --self-contained true -o Deploy/LogicReinc.BlendFarm.Server/_Build/linux-x64
 dotnet publish LogicReinc.BlendFarm.Server -f net6.0 -c Release -r osx-x64 -p:PublishSingleFile=true --self-contained true -o Deploy/LogicReinc.BlendFarm.Server/_Build/osx-x64
+dotnet publish LogicReinc.BlendFarm.Server -f net6.0 -c Release -r linux-arm64 -p:PublishSingleFile=true --self-contained true -o Deploy/LogicReinc.BlendFarm.Server/_Build/linux-arm64
 
 
 #Preparing BlendFarm.Server
@@ -35,5 +36,12 @@ rm "BlendFarm.Server-$version-OSX64.zip"
 mkdir "BlendFarm.Server-$version-OSX64"
 cp "_Build/osx-x64/LogicReinc.BlendFarm.Server" "BlendFarm.Server-$version-OSX64/LogicReinc.BlendFarm.Server"
 zip -r "BlendFarm.Server-$version-OSX64.zip" "BlendFarm.Server-$version-OSX64"
+
+echo Preparing Server Linux arm64 Build
+rm -R "BlendFarm.Server-$version-LinuxArm64"
+rm "BlendFarm.Server-$version-LinuxArm64.zip"
+mkdir "BlendFarm.Server-$version-LinuxArm64"
+cp "_Build/linux-arm6464/LogicReinc.BlendFarm.Server" "BlendFarm.Server-$version-LinuxArm64/LogicReinc.BlendFarm.Server"
+zip -r "BlendFarm.Server-$version-LinuxArm64.zip" "BlendFarm.Server-$version-LinuxArm64"
 
 cd ../../
